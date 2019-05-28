@@ -6,3 +6,5 @@ Serverless availability tests using Azure Functions
         "AppInsights:instrumentationKey":"b783e117-4fd8-413a-acfd-1234567890"
         "AppInsights:region": "West Europe"
         "Endpoint": "https://myendpointtotest.com/"
+        
+ [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
