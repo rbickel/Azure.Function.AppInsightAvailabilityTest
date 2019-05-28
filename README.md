@@ -13,6 +13,6 @@ These settings are required to define the endpoint (uri) to ping, the location a
 
         "AppInsights:instrumentationKey":"b783e117-4fd8-413a-acfd-1234567890"
         "AppInsights:region": "West Europe"
-        "Endpoint": "https://myendpointtotest.com/"
+        "Endpoint": "https://www.bing.com/"
         
 
