@@ -22,6 +22,13 @@
         "metadata": {
           "description": "Location for all resources."
         }
+      },
+      "functionPackage": {
+        "type": "string",
+        "defaultValue": "https://github.com/rbickel/Azure.Function.AppInsightAvailabilityTest/raw/master/Releases/FunctionAvailabilityTests%20-%202019051414422337.zip",
+        "metadata": {
+          "description": "The name of the function app that you wish to create."
+        }
       }
     },
     "variables": {
@@ -30,7 +37,8 @@
       "applicationInsightsName": "[parameters('appName')]",
       "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
       "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-      "functionWorkerRuntime": "dotnet"
+      "functionWorkerRuntime": "dotnet",
+      "runFromZIP": "[parameters('functionPackage')]"
     },
     "resources": [
       {
@@ -67,34 +75,25 @@
           "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
           "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
         ],
-        "resources": [
-            {
-                "name": "MSDeploy",
-                "type": "Extensions",
-                "apiVersion": "2015-02-01",
-                "dependsOn": [
-                    "[resourceId('Microsoft.Web/Sites', parameters('appName'))]"
-                ],
-                "properties": {
-                    "packageUri": "https://github.com/rbickel/Azure.Function.AppInsightAvailabilityTest/raw/master/Releases/FunctionAvailabilityTests%20-%202019051414422337.zip"
-                }
-            }
-        ],
         "properties": {
           "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
           "siteConfig": {
             "appSettings": [
                 {
+                    "name": "WEBSITE_RUN_FROM_ZIP",
+                    "value": "[variables('runFromZIP')]"
+                },
+                {
                     "name": "AppInsights:instrumentationKey",
-                    "value": "TBD"
+                    "value": "[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]"
                 },
                 {
                 "name": "AppInsights:region",
-                "value": "TBD"
+                "value": "https://www.bing.com"
                 },  
               {
                 "name": "Endpoint",
-                "value": "TBD"
+                "value": "[parameters('location')]"
               },
               {
                 "name": "AzureWebJobsDashboard",
@@ -136,7 +135,7 @@
         "apiVersion": "2018-05-01-preview",
         "name": "[variables('applicationInsightsName')]",
         "type": "microsoft.insights/components",
-        "location": "East US",
+        "location": "West Europe",
         "tags": {
           "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('applicationInsightsName'))]": "Resource"
         },
