@@ -25,7 +25,7 @@
     },
     "functionPackage": {
       "type": "string",
-      "defaultValue": "https://github.com/rbickel/Azure.Function.AppInsightAvailabilityTest/raw/master/Releases/FunctionAvailabilityTests%20-%202019051414422337.zip",
+      "defaultValue": "https://github.com/rbickel/Azure.Function.AppInsightAvailabilityTest/raw/master/webdeploy/FunctionAvailabilityTests%20-%202019051414422337.zip",
       "metadata": {
         "description": "The name of the function app that you wish to create."
       }
