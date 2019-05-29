@@ -15,9 +15,9 @@ steps:
   inputs:
     command: 'build'
     projects: 'FunctionAvailabilityTests'
-    arguments: '-c Release --output $(Build.ArtifactStagingDirectory)/publish'
+    arguments: '-c Release --output $(Build.BinariesDirectory)/publish'
 - task: ArchiveFiles@2
-  displayName: 'Archive .netcore function to $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  displayName: 'Archive .netcore function'
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)/publish'
     includeRootFolder: false
