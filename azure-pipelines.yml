@@ -12,9 +12,9 @@ pool:
 steps:
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
+    command: 'build'
     projects: 'FunctionAvailabilityTests'
-    arguments: '-c Release'
+    arguments: '-c Release --output publish'
 # Copy Files
 # Copy files from source folder to target folder using match patterns (The match patterns will only match file paths, not folder paths)
 - task: CopyFiles@2
