@@ -144,5 +144,11 @@
         "Request_Source": "IbizaWebAppExtensionCreate"
       }
     }
-  ]
+  ],
+  "outputs": {
+        "HostKey":{
+            "type":"string",
+            "value":"[reference(variables('functionAppName')).outputs.HostKey.value]"
+        }
+   }
 }
