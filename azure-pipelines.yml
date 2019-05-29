@@ -34,4 +34,4 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)/publish/**/.zip' 
-    artifactName: 'drop' 
+    artifactName: 'webdeploy' 
