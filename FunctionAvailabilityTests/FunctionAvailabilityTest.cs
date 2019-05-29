@@ -28,6 +28,7 @@ namespace FunctionAvailabilityTests
         public static async Task Run([TimerTrigger("*/5 * * * * *")]TimerInfo myTimer, ILogger log, Microsoft.Azure.WebJobs.ExecutionContext context)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            log.LogInformation($"Test DevOps");
 
             Stopwatch sw = Stopwatch.StartNew();
             var response = await httpClient.GetAsync(Endpoint);
