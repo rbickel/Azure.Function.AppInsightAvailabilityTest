@@ -1,6 +1,8 @@
 # Azure.Function.AppInsightAvailabilityTest
 
-This prohect is a proof of concept to run availability tests with an Azure Function and report telemetry to Application Insight. The function uses a timer to run every 5 seconds. This can usually be used to monitor public endpoint, as well as prive endpoints, using an [Azure Functions Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).
+[![Build Status](https://dev.azure.com/rabickel/Service%20Mesh/_apis/build/status/rbickel.Azure.Function.AppInsightAvailabilityTest?branchName=master)](https://dev.azure.com/rabickel/Service%20Mesh/_build/latest?definitionId=7&branchName=master)
+
+This project is a proof of concept to run availability tests with an Azure Function and report telemetry to Application Insight. The function uses a timer to run every 5 seconds. This can usually be used to monitor public endpoint, as well as prive endpoints, using an [Azure Functions Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).
 
 
 The *Deploy to Azure* button deploys the function in an [Azure Function Consumption plan](https://azure.microsoft.com/en-us/pricing/details/functions/), in order to monitor public endpoints. To start monitoring private endpoint availability, see [Azure Functions Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan).
