@@ -159,7 +159,7 @@
   "outputs": {
     "hostKey": {
       "type": "string",
-      "value": "[listSecrets(variables('functionAppName'), '2015-08-01').hostKey]"
+      "value": "[listSecrets(variables('functionAppName'), '2015-08-01').key]"
     }
   }
 }
