@@ -16,6 +16,13 @@
         "description": "Location for all resources."
       }
     },
+    "endpoint": {
+      "type": "string",
+      "defaultValue": "https://www.bing.com",
+      "metadata": {
+        "description": "Endpoint uri"
+      }
+    },
     "functionPackage": {
       "type": "string",
       "defaultValue": "https://github.com/rbickel/Azure.Function.AppInsightAvailabilityTest/raw/master/webdeploy/FunctionAvailabilityTests%20-%202019051414422337.zip",
@@ -49,7 +56,7 @@
             "WEBSITE_RUN_FROM_ZIP": "[variables('runFromZIP')]",
             "AppInsights:instrumentationKey":"[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]",
             "AppInsights:region":"[parameters('location')]",
-            "Endpoint":"[listsecrets(resourceId('Microsoft.Web/sites/functions', variables('functionAppName'), 'Ping'),'2015-08-01').trigger_url]"
+            "Endpoint":"[parameters('endpoint')]"
         }
     }
   ],
