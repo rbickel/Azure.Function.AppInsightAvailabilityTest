@@ -41,3 +41,14 @@ steps:
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'drop' 
+- task: AzureFileCopy@3
+  displayName: 'Publish to public blob storage'
+  inputs:
+    SourcePath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    azureSubscription: 'rabickel Internal Subscription (6ff9e090-f045-45ba-adec-183d64c01b9b)'
+    Destination: 'AzureBlob'
+    storage: 'rabickelartifacts'
+    ContainerName: 'public'
+    BlobPrefix: 'functions/'
+    outputStorageUri: 'storagecontaineruri'
+    outputStorageContainerSasToken: 'storagecontainersastoken'
