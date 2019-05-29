@@ -155,11 +155,5 @@
         "Request_Source": "IbizaWebAppExtensionCreate"
       }
     }
-  ],
-  "outputs": {
-        "PingUri":{
-            "type":"string",
-            "value":"[listsecrets(resourceId('Microsoft.Web/sites/functions', variables('functionAppName'), 'Ping'),'2015-08-01').trigger_url]"
-        }
-   }
+  ]
 }
