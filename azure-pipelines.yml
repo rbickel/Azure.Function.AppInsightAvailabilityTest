@@ -15,6 +15,13 @@ steps:
     command: 'build'
     projects: 'FunctionAvailabilityTests'
     arguments: '-c Release --output $(Build.ArtifactStagingDirectory)/publish'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)/publish'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 # Copy Files
 # Copy files from source folder to target folder using match patterns (The match patterns will only match file paths, not folder paths)
 - task: CopyFiles@2
@@ -33,5 +40,5 @@ steps:
     artifactName: 'drop' 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/publish/**/.zip' 
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
     artifactName: 'webdeploy' 
