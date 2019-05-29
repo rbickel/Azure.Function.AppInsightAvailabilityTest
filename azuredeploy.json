@@ -31,10 +31,10 @@
       }
     }
   },
-  "variables": {
-    "functionAppName": "[parameters('appName')]",
-    "hostingPlanName": "[parameters('appName')]",
-    "applicationInsightsName": "[parameters('appName')]",
+  "variables": 
+    "functionAppName": "[concat(parameters('appName'), '-app')]",
+    "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
+    "applicationInsightsName": "[concat(parameters('appName'), '-insights')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "functionWorkerRuntime": "dotnet",
