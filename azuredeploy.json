@@ -8,6 +8,13 @@
         "description": "The name of the function app that you wish to create."
       }
     },
+    "endpointUri": {
+      "type": "string",
+      "defaultValue": "https://www.bing.com",
+      "metadata": {
+        "description": "The name of the function app that you wish to create."
+      }
+    },
     "storageAccountType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
@@ -31,7 +38,7 @@
       }
     }
   },
-  "variables": 
+  "variables": {
     "functionAppName": "[concat(parameters('appName'), '-app')]",
     "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
     "applicationInsightsName": "[concat(parameters('appName'), '-insights')]",
@@ -93,7 +100,7 @@
               },  
             {
               "name": "Endpoint",
-              "value": "https://www.bing.com/"
+              "value": "[parameters('endpointUri')]"
             },
             {
               "name": "AzureWebJobsDashboard",
