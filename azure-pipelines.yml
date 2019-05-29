@@ -10,16 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-#- task: ArchiveFiles@2
-  #inputs:
-    #rootFolderOrFile: '$(Build.BinariesDirectory)' 
-    #includeRootFolder: false 
-    #archiveType: 'zip' # Options: zip, 7z, tar, wim
-    #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
-    #archiveFile: '$(Build.BinariesDirectory)/$(Build.BuildId).zip' 
-    #replaceExistingArchive: true 
-    #verbose: # Optional
-    #quiet: # Optional
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: 'FunctionAvailabilityTests'
+    arguments: '-c Release'
 # Copy Files
 # Copy files from source folder to target folder using match patterns (The match patterns will only match file paths, not folder paths)
 - task: CopyFiles@2
