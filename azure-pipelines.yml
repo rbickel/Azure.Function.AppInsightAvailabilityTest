@@ -11,11 +11,13 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: 'Build and publish .netcore function'
   inputs:
     command: 'build'
     projects: 'FunctionAvailabilityTests'
     arguments: '-c Release --output $(Build.ArtifactStagingDirectory)/publish'
 - task: ArchiveFiles@2
+  displayName: 'Archive .netcore function to $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)/publish'
     includeRootFolder: false
@@ -35,10 +37,7 @@ steps:
     overWrite: true # Optional
     #flattenFolders: false # Optional
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish $(Build.ArtifactStagingDirectory)'
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'drop' 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
-    artifactName: 'webdeploy' 
